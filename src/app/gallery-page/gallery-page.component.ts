@@ -12,7 +12,25 @@ import { trigger, animation, useAnimation, group, transition, animate, style, qu
     ]),
     trigger('carouselAnimation', [
       transition(':enter', []),
-      transition('* => *', []),
+      transition('* => *', [
+        style({ height:'!' }),
+        query('img', style({
+          position: 'absolute',
+          left:0,
+          top:0,
+          width:'100%'
+        })),
+        query(':enter', style({ transform: 'translateX(-100%)' })),
+        group([
+          animate('300ms ease-in', style({ height: '*' })),
+          query(':leave', [
+            animate('500ms ease-out', style({ transform: 'translateX(100%)'}))
+          ]),
+          query(':enter',[
+            animate('500ms ease-out', style({ transform: 'translateX(0%)'}))
+          ])
+        ])
+      ]),
       transition(':leave', [])
     ])
   ],
