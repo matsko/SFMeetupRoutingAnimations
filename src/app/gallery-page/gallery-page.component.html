@@ -1,0 +1,13 @@
+<h1>Nice Angular Logos</h1>
+
+<ul class="thumbs">
+  <li class="action left" (click)="left()">&lt;</li>
+  <li *ngFor="let image of images; let index=index" class="thumb" (click)="selectedIndex=index" [class.active]="selectedIndex==index">
+    <img [src]="image">
+  </li>
+  <li class="action right" (click)="right()">&gt;</li>
+</ul>
+
+<div class="stage" [@carousel]="selectedIndex">
+  <img [src]="selectedImage" *ngSwap="selectedIndex">
+</div>

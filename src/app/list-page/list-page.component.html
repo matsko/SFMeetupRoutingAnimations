@@ -1,0 +1,15 @@
+<h1>Previous SF Meetups</h1>
+
+<div class="search-bar">
+  <input type="text" #q placeholder="Filter..." (input)="search(q.value)">
+</div>
+
+<div class="stage">
+  <div *ngFor="let item of items; let index=index" class="record">
+    <div class="index" [class]="generateColorClass(item.id)">{{ item.id }}</div>
+    <div class="data">
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+</div>

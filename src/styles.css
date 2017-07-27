@@ -1,0 +1,18 @@
+*,*:before,*:after {
+  box-sizing:border-box;
+}
+
+html, body, select, input, textarea, option, pre, code {
+  font-family:verdana;
+}
+
+body {
+  margin:0;
+  padding:0;
+  background:#eee;
+}
+
+h1 {
+  margin-bottom:50px;
+  font-weight:normal;
+}

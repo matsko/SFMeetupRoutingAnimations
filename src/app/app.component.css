@@ -1,0 +1,35 @@
+:host {
+  text-align:center;
+  display:block;
+  margin-bottom:50px;
+}
+
+nav {
+  background:#DFD3B6;
+  color:white;
+  margin-bottom:50px;
+  padding:10px;
+}
+
+nav a {
+  font-size:30px;
+  display:inline-block;
+  width:200px;
+  padding:10px 0;
+  background:#eee;
+  color:black;
+  margin:0px 15px;
+  text-decoration:none;
+}
+
+nav a:hover {
+  background:white;
+  outline:1px solid #0092B2;
+  color:#0092B2;
+}
+
+nav a.active {
+  background:white;
+  color:#A8C545;
+  outline:1px solid #A8C545;
+}
