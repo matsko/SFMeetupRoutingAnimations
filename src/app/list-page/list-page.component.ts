@@ -1,9 +1,17 @@
 import { Component } from '@angular/core';
+import { trigger, animation, useAnimation, group, transition, animate, style, query } from '@angular/animations';
 
 @Component({
   selector: 'app-list-page',
   templateUrl: './list-page.component.html',
-  styleUrls: ['./list-page.component.css']
+  styleUrls: ['./list-page.component.css'],
+  animations: [
+    trigger('listAnimation', [
+      transition(':enter', []),
+      transition(':leave', []),
+      transition('* => *', []),
+    ])
+  ]
 })
 export class ListPageComponent {
 
@@ -67,6 +75,7 @@ export class ListPageComponent {
       if (!q) return true;
       if (item.title.toLowerCase().indexOf(q) >= 0) return true;
       if (item.description.toLowerCase().indexOf(q) >= 0) return true;
+      if (item.id.toString() == criteria) return true;
       return false;
     });
   }

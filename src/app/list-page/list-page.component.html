@@ -4,7 +4,7 @@
   <input type="text" #q placeholder="Filter..." (input)="search(q.value)">
 </div>
 
-<div class="stage">
+<div class="stage" [@listAnimation]="items.length">
   <div *ngFor="let item of items; let index=index" class="record">
     <div class="index" [class]="generateColorClass(item.id)">{{ item.id }}</div>
     <div class="data">
