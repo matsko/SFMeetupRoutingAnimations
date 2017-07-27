@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { trigger, animation, useAnimation, group, transition, animate, style, query } from '@angular/animations';
 
 @Component({
@@ -6,6 +6,10 @@ import { trigger, animation, useAnimation, group, transition, animate, style, qu
   templateUrl: './gallery-page.component.html',
   styleUrls: ['./gallery-page.component.css'],
   animations: [
+    trigger('pageAnimation', [
+      transition(':enter', []),
+      transition(':leave', []),
+    ]),
     trigger('carouselAnimation', [
       transition(':enter', []),
       transition('* => *', []),
@@ -14,7 +18,11 @@ import { trigger, animation, useAnimation, group, transition, animate, style, qu
   ],
 })
 export class GalleryPageComponent {
-  selectedIndex = 0;
+  @HostBinding('@pageAnimation')
+  public animatePage = true;
+
+  public selectedIndex = 0;
+
   get selectedImage() {
     return this.images[this.selectedIndex];
   }

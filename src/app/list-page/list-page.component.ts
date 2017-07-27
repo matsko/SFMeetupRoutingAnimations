@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { trigger, animation, useAnimation, group, transition, animate, style, query } from '@angular/animations';
 
 @Component({
@@ -6,6 +6,10 @@ import { trigger, animation, useAnimation, group, transition, animate, style, qu
   templateUrl: './list-page.component.html',
   styleUrls: ['./list-page.component.css'],
   animations: [
+    trigger('pageAnimation', [
+      transition(':enter', []),
+      transition(':leave', []),
+    ]),
     trigger('listAnimation', [
       transition(':enter', []),
       transition(':leave', []),
@@ -14,6 +18,8 @@ import { trigger, animation, useAnimation, group, transition, animate, style, qu
   ]
 })
 export class ListPageComponent {
+  @HostBinding('@pageAnimation')
+  public animatePage = true;
 
   constructor() {
     this.search('');
