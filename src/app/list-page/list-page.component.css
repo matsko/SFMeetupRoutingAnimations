@@ -6,7 +6,6 @@
   overflow:hidden;
   border-radius:3px;
   margin:0 auto;
-  display:table;
 }
 
 .search-bar {
@@ -31,21 +30,26 @@
 }
 
 .stage .record {
-  display:table-row;
+  overflow:hidden;
+  position:relative;
+  padding-left:150px;
 }
 
-.stage .record + .record > * {
+.stage .record + .record {
   border-top:5px solid #DFD3B6;
 }
 
 .stage .index {
   width:150px;
-  height:150px;
   font-size:100px;
   line-height:150px;
   text-align:center;
   color:white;
-  display:table-cell;
+  display:inline-block;
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
 }
 
 .stage .data {

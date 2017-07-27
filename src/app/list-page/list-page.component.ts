@@ -1,5 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
-import { trigger, animation, useAnimation, group, transition, animate, style, query } from '@angular/animations';
+import { trigger, stagger, animation, useAnimation, group, transition, animate, style, query } from '@angular/animations';
 
 @Component({
   selector: 'app-list-page',
@@ -13,7 +13,22 @@ import { trigger, animation, useAnimation, group, transition, animate, style, qu
     trigger('listAnimation', [
       transition(':enter', []),
       transition(':leave', []),
-      transition('* => *', []),
+      transition(':increment', [
+        query(":enter", [
+          style({ height: 0 }),
+          stagger('100ms', [
+            animate('300ms ease-out', style('*'))
+          ])
+        ])
+      ]),
+      transition(':decrement', [
+        query(":leave", [
+          style({ height: '!' }),
+          stagger('100ms', [
+            animate('300ms ease-out', style({ height: '0px' }))
+          ])
+        ])
+      ]),
     ])
   ]
 })
