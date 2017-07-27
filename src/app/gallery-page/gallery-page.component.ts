@@ -7,6 +7,9 @@ import { trigger, animation, useAnimation, group, transition, animate, style, qu
   styleUrls: ['./gallery-page.component.css'],
   animations: [
     trigger('carousel', [
+      transition(':enter', []),
+      transition('* => *', []),
+      transition(':leave', [])
     ])
   ],
 })
