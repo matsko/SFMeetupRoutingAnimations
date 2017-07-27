@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet} from '@angular/router';
 import { trigger, animation, useAnimation, group, transition, animate, style, query } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['app.component.css'],
-  animations: []
+  animations: [
+    trigger('routeAnimation', [
+      transition('* => galleryPage', [
+
+      ]),
+      transition('* => listPage', [
+
+      ])
+    ])
+  ]
 })
 export class AppComponent {
   constructor(private router: Router) {}
@@ -17,5 +26,9 @@ export class AppComponent {
 
   isListPage() {
     return this.router.url == "/list";
+  }
+
+  prepRouteTransition(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 }

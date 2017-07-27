@@ -8,6 +8,6 @@
   <li class="action right" (click)="right()">&gt;</li>
 </ul>
 
-<div class="stage" [@carousel]="selectedIndex">
+<div class="stage" [@carouselAnimation]="selectedIndex">
   <img [src]="selectedImage" *ngSwap="selectedIndex">
 </div>
