@@ -8,11 +8,41 @@ import { trigger, animation, useAnimation, group, transition, animate, style, qu
   styleUrls: ['app.component.css'],
   animations: [
     trigger('routeAnimation', [
-      transition('* => galleryPage', [
-
+      transition('listPage => galleryPage', [
+        style({ position: 'relative' }),
+        query(':enter, :leave', style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })),
+        group([
+          query(':enter', [
+            style({ transform: 'translateX(-100%)' }),
+            animate('300ms ease-out', style({ transform: 'translateX(0%)' }))
+          ]),
+          query(':leave', [
+            animate('300ms ease-out', style({ transform: 'translateX(100%)' }))
+          ])
+        ])
       ]),
-      transition('* => listPage', [
-
+      transition('galleryPage => listPage', [
+        style({ position: 'relative' }),
+        query(':enter, :leave', style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })),
+        group([
+          query(':enter', [
+            style({ transform: 'translateX(100%)' }),
+            animate('300ms ease-out', style({ transform: 'translateX(0%)' }))
+          ]),
+          query(':leave', [
+            animate('300ms ease-out', style({ transform: 'translateX(-100%)' }))
+          ])
+        ])
       ])
     ])
   ]
@@ -29,6 +59,6 @@ export class AppComponent {
   }
 
   prepRouteTransition(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation']
   }
 }
