@@ -13,22 +13,8 @@ import { trigger, stagger, animation, useAnimation, group, transition, animate, 
     trigger('listAnimation', [
       transition(':enter', []),
       transition(':leave', []),
-      transition(':increment', [
-        query(":enter", [
-          style({ height: 0 }),
-          stagger('100ms', [
-            animate('300ms ease-out', style('*'))
-          ])
-        ])
-      ]),
-      transition(':decrement', [
-        query(":leave", [
-          style({ height: '!' }),
-          stagger('100ms', [
-            animate('300ms ease-out', style({ height: '0px' }))
-          ])
-        ])
-      ]),
+      transition(':increment', []),
+      transition(':decrement', []),
     ])
   ]
 })
