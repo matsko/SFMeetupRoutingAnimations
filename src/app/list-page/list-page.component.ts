@@ -7,14 +7,41 @@ import { trigger, stagger, animation, useAnimation, group, transition, animate, 
   styleUrls: ['./list-page.component.css'],
   animations: [
     trigger('pageAnimation', [
-      transition(':enter', []),
-      transition(':leave', []),
+      transition(':leave', [
+        query('h1, .search-bar, .record', [
+          stagger(100, [
+            animate('300ms ease-out', style({ transform: 'translateY(-100px)', opacity: 0 }))
+          ])
+        ])
+      ]),
+      transition(':enter', [
+        query('h1, .search-bar, .record', [
+          style({ opacity: 0, transform: 'translateY(-100px)' }),
+          stagger(-100, [
+            animate(300, style('*'))
+          ])
+        ])
+      ]),
     ]),
     trigger('listAnimation', [
       transition(':enter', []),
       transition(':leave', []),
-      transition(':increment', []),
-      transition(':decrement', []),
+      transition(':increment', [
+        query(':enter', [
+          style({ height: '0px' }),
+          stagger(100, [
+            animate(300, style({ height: '*' }))
+          ])
+        ])
+      ]),
+      transition(':decrement', [
+        query(':leave', [
+          style({ height: '!' }),
+          stagger(-100, [
+            animate(300, style({ height: '0px' }))
+          ])
+        ])
+      ]),
     ])
   ]
 })

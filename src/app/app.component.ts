@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet} from '@angular/router';
-import { trigger, animation, useAnimation, group, transition, animate, style, query } from '@angular/animations';
+import { trigger, animateChild, animation, useAnimation, group, transition, animate, style, query } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +8,54 @@ import { trigger, animation, useAnimation, group, transition, animate, style, qu
   styleUrls: ['app.component.css'],
   animations: [
     trigger('routeAnimation', [
-      transition('listPage => galleryPage', []),
-      transition('galleryPage => listPage', [])
+      transition('listPage => galleryPage', [
+        style({ position: 'relative' }),
+        query(':enter, :leave', [
+          style({
+            position:'absolute',
+            top:0,
+            left:0,
+            width:'100%'
+          })
+        ]),
+        query(':enter', [
+          style({ left: '-100%'})
+        ]),
+        query(':leave', animateChild()),
+        group([
+          query(':leave', [
+            animate('300ms ease-out', style({ left: '100%'}))
+          ]),
+          query(':enter', [
+            animate('300ms ease-out', style({ left: '0%'}))
+          ])
+        ]),
+        query(':enter', animateChild()),
+      ]),
+      transition('galleryPage => listPage', [
+        style({ position: 'relative' }),
+        query(':enter, :leave', [
+          style({
+            position:'absolute',
+            top:0,
+            left:0,
+            width:'100%'
+          })
+        ]),
+        query(':enter', [
+          style({ left: '100%'})
+        ]),
+        query(':leave', animateChild()),
+        group([
+          query(':leave', [
+            animate('300ms ease-out', style({ left: '-100%'}))
+          ]),
+          query(':enter', [
+            animate('300ms ease-out', style({ left: '0%'}))
+          ])
+        ]),
+        query(':enter', animateChild()),
+      ])
     ])
   ]
 })

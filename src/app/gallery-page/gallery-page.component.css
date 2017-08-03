@@ -15,8 +15,8 @@
   box-shadow:0 0 10px #999;
   height:120px;
   overflow:hidden;
-  width:180px;
-  margin:0 10px;
+  width:120px;
+  margin:0 5px;
 }
 .thumbs li:hover {
   outline:3px solid #0092B2;
